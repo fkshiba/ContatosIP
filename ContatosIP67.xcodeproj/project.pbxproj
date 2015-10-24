@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		324337E91BDBAB4900A47A2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 324337E81BDBAB4900A47A2E /* main.m */; };
 		324337EC1BDBAB4900A47A2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 324337EB1BDBAB4900A47A2E /* AppDelegate.m */; };
-		324337EF1BDBAB4900A47A2E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324337EE1BDBAB4900A47A2E /* ViewController.m */; };
+		324337EF1BDBAB4900A47A2E /* FormularioContatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324337EE1BDBAB4900A47A2E /* FormularioContatoViewController.m */; };
 		324337F21BDBAB4900A47A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324337F01BDBAB4900A47A2E /* Main.storyboard */; };
 		324337F51BDBAB4900A47A2E /* ContatosIP67.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 324337F31BDBAB4900A47A2E /* ContatosIP67.xcdatamodeld */; };
 		324337F71BDBAB4900A47A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324337F61BDBAB4900A47A2E /* Assets.xcassets */; };
 		324337FA1BDBAB4900A47A2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324337F81BDBAB4900A47A2E /* LaunchScreen.storyboard */; };
+		324338031BDBE27100A47A2E /* Contato.m in Sources */ = {isa = PBXBuildFile; fileRef = 324338021BDBE27100A47A2E /* Contato.m */; };
+		324338061BDBFA2200A47A2E /* ContatoDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 324338051BDBFA2200A47A2E /* ContatoDao.m */; };
+		324338091BDC07FB00A47A2E /* ListaContatosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324338081BDC07FB00A47A2E /* ListaContatosViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +24,19 @@
 		324337E81BDBAB4900A47A2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		324337EA1BDBAB4900A47A2E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		324337EB1BDBAB4900A47A2E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		324337ED1BDBAB4900A47A2E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		324337EE1BDBAB4900A47A2E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		324337ED1BDBAB4900A47A2E /* FormularioContatoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormularioContatoViewController.h; sourceTree = "<group>"; };
+		324337EE1BDBAB4900A47A2E /* FormularioContatoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormularioContatoViewController.m; sourceTree = "<group>"; };
 		324337F11BDBAB4900A47A2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		324337F41BDBAB4900A47A2E /* ContatosIP67.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContatosIP67.xcdatamodel; sourceTree = "<group>"; };
 		324337F61BDBAB4900A47A2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		324337F91BDBAB4900A47A2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		324337FB1BDBAB4900A47A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		324338011BDBE27100A47A2E /* Contato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contato.h; path = Classes/Contato.h; sourceTree = "<group>"; };
+		324338021BDBE27100A47A2E /* Contato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contato.m; path = Classes/Contato.m; sourceTree = "<group>"; };
+		324338041BDBFA2200A47A2E /* ContatoDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContatoDao.h; sourceTree = "<group>"; };
+		324338051BDBFA2200A47A2E /* ContatoDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContatoDao.m; sourceTree = "<group>"; };
+		324338071BDC07FB00A47A2E /* ListaContatosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaContatosViewController.h; sourceTree = "<group>"; };
+		324338081BDC07FB00A47A2E /* ListaContatosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaContatosViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +71,15 @@
 			children = (
 				324337EA1BDBAB4900A47A2E /* AppDelegate.h */,
 				324337EB1BDBAB4900A47A2E /* AppDelegate.m */,
-				324337ED1BDBAB4900A47A2E /* ViewController.h */,
-				324337EE1BDBAB4900A47A2E /* ViewController.m */,
+				324337ED1BDBAB4900A47A2E /* FormularioContatoViewController.h */,
+				324337EE1BDBAB4900A47A2E /* FormularioContatoViewController.m */,
+				324338041BDBFA2200A47A2E /* ContatoDao.h */,
+				324338051BDBFA2200A47A2E /* ContatoDao.m */,
+				324338011BDBE27100A47A2E /* Contato.h */,
+				324338021BDBE27100A47A2E /* Contato.m */,
 				324337F01BDBAB4900A47A2E /* Main.storyboard */,
+				324338071BDC07FB00A47A2E /* ListaContatosViewController.h */,
+				324338081BDC07FB00A47A2E /* ListaContatosViewController.m */,
 				324337F61BDBAB4900A47A2E /* Assets.xcassets */,
 				324337F81BDBAB4900A47A2E /* LaunchScreen.storyboard */,
 				324337FB1BDBAB4900A47A2E /* Info.plist */,
@@ -152,8 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				324337EF1BDBAB4900A47A2E /* ViewController.m in Sources */,
+				324338031BDBE27100A47A2E /* Contato.m in Sources */,
+				324337EF1BDBAB4900A47A2E /* FormularioContatoViewController.m in Sources */,
+				324338091BDC07FB00A47A2E /* ListaContatosViewController.m in Sources */,
 				324337EC1BDBAB4900A47A2E /* AppDelegate.m in Sources */,
+				324338061BDBFA2200A47A2E /* ContatoDao.m in Sources */,
 				324337F51BDBAB4900A47A2E /* ContatosIP67.xcdatamodeld in Sources */,
 				324337E91BDBAB4900A47A2E /* main.m in Sources */,
 			);

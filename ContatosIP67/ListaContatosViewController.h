@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ListaContatosViewController.h
 //  ContatosIP67
 //
 //  Created by ios5778 on 24/10/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ListaContatosViewController : UITableViewController
 
 @end
-
