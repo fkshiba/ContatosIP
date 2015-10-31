@@ -37,4 +37,12 @@ static ContatoDao *defaultDao = nil;
 - (NSMutableArray *) todosContatos {
     return self.contatos;
 }
+
+- (NSInteger)total {
+    return [self.contatos count];
+}
+
+- (Contato *) contatoDaPosicao:(NSInteger)posicao {
+    return self.contatos[posicao];
+}
 @end

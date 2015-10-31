@@ -13,4 +13,6 @@
 + (instancetype) contatoDaoInstance;
 - (void) adicionaContato: (Contato *) contato;
 - (NSMutableArray *) todosContatos;
+- (NSInteger) total;
+- (Contato *) contatoDaPosicao: (NSInteger) posicao;
 @end

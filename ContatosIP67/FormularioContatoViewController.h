@@ -14,7 +14,5 @@
 @property (nonatomic, weak) IBOutlet UITextField *site;
 @property (nonatomic, weak) IBOutlet UITextField *endereco;
 @property (nonatomic, weak) IBOutlet UITextField *telefone;
-
--(IBAction) pegaDadosDoFormulario;
 @end
 

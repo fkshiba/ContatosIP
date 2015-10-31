@@ -7,12 +7,62 @@
 //
 
 #import "ListaContatosViewController.h"
+#import "FormularioContatoViewController.h"
+#import "ContatoDao.h"
 
 @interface ListaContatosViewController ()
-
+@property ContatoDao *dao;
 @end
 
 @implementation ListaContatosViewController
+
+- (id) init {
+    self = [super init];
+    if (self) {
+        UIBarButtonItem *botaoAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action: @selector(exibeFormulario:)];
+        self.navigationItem.title = @"Contatos";
+        self.navigationItem.rightBarButtonItem = botaoAdd;
+        self.dao = [ContatoDao contatoDaoInstance];
+    }
+    return self;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.dao total];
+}
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *identificador = @"Celula";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identificador];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identificador];
+    }
+    Contato *contato = [self.dao contatoDaPosicao: indexPath.row];
+    cell.textLabel.text = contato.nome;
+    return cell;
+}
+
+- (void) exibeFormulario: (UIButton *) sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
+    FormularioContatoViewController *form = [storyboard instantiateViewControllerWithIdentifier: @"FormContato"];
+    [self.navigationController pushViewController: form animated: YES];
+}
+
+- (void) chamaAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Formulario" message: @"Aqui vamos exibir o formulario" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style: UIAlertActionStyleDefault handler: nil];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated: YES completion: nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -11,23 +11,28 @@
 #import "ContatoDao.h"
 
 @interface FormularioContatoViewController ()
-
+@property Contato *contato;
 @end
 
 @implementation FormularioContatoViewController
 
-- (IBAction)pegaDadosDoFormulario {
-    Contato *contato = [Contato new];
-    contato.nome = self.nome.text;
-    contato.email = self.email.text;
-    contato.site = self.site.text;
-    contato.endereco = self.endereco.text;
-    contato.telefone = self.telefone.text;
+- (void) pegaDadosDoFormulario {
+    self.contato.nome = self.nome.text;
+    self.contato.email = self.email.text;
+    self.contato.site = self.site.text;
+    self.contato.endereco = self.endereco.text;
+    self.contato.telefone = self.telefone.text;
     
     ContatoDao *dao = [ContatoDao contatoDaoInstance];
-    [dao adicionaContato:contato];
+    [dao adicionaContato:self.contato];
     
     NSLog(@"Dados: %@", [dao todosContatos]);
+}
+
+- (void) criaContato {
+    self.contato = [Contato new];
+    [self pegaDadosDoFormulario];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (id) init {
@@ -36,9 +41,15 @@
     return self;
 }
 
-- (id) initWithCoder:(NSCoder *)coder
+- (id) initWithCoder:(NSCoder *) coder
 {
-    self = [super initWithCoder:coder];
+    self = [super initWithCoder: coder];
+    if (self) {
+        self.navigationItem.title = @"Novo";
+        UIBarButtonItem *botaoCadastrar = [[UIBarButtonItem alloc] initWithTitle:@"Salvar" style:UIBarButtonItemStyleDone
+                                                                          target:self action:@selector(criaContato)];
+        self.navigationItem.rightBarButtonItem = botaoCadastrar;
+    }
     NSLog(@"initWithCoder");
     return self;
 }

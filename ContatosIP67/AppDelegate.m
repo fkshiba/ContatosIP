@@ -18,7 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     ListaContatosViewController *lista = [ListaContatosViewController new];
-    self.window.rootViewController = lista;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController: lista];
+    self.window.rootViewController = nav;
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
