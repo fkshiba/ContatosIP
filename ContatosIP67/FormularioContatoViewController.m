@@ -7,30 +7,34 @@
 //
 
 #import "FormularioContatoViewController.h"
-#import "Contato.h"
 #import "ContatoDao.h"
 
 @interface FormularioContatoViewController ()
-@property Contato *contato;
+
 @end
 
 @implementation FormularioContatoViewController
 
 - (void) pegaDadosDoFormulario {
+    if (!self.contato) {
+        self.contato = [Contato new];
+    }
     self.contato.nome = self.nome.text;
     self.contato.email = self.email.text;
     self.contato.site = self.site.text;
     self.contato.endereco = self.endereco.text;
     self.contato.telefone = self.telefone.text;
-    
-    ContatoDao *dao = [ContatoDao contatoDaoInstance];
-    [dao adicionaContato:self.contato];
-    
-    NSLog(@"Dados: %@", [dao todosContatos]);
 }
 
 - (void) criaContato {
     self.contato = [Contato new];
+    [self pegaDadosDoFormulario];
+    [self.navigationController popViewControllerAnimated:YES];
+    ContatoDao *dao = [ContatoDao contatoDaoInstance];
+    [dao adicionaContato:self.contato];
+}
+
+- (void)atualizaContato {
     [self pegaDadosDoFormulario];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -46,9 +50,6 @@
     self = [super initWithCoder: coder];
     if (self) {
         self.navigationItem.title = @"Novo";
-        UIBarButtonItem *botaoCadastrar = [[UIBarButtonItem alloc] initWithTitle:@"Salvar" style:UIBarButtonItemStyleDone
-                                                                          target:self action:@selector(criaContato)];
-        self.navigationItem.rightBarButtonItem = botaoCadastrar;
     }
     NSLog(@"initWithCoder");
     return self;
@@ -57,6 +58,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    UIBarButtonItem *botaoSalvar = nil;
+    if (self.contato) {
+        self.nome.text = self.contato.nome;
+        self.email.text = self.contato.email;
+        self.site.text = self.contato.site;
+        self.endereco.text = self.contato.endereco;
+        self.telefone.text = self.contato.telefone;
+        
+        //create different buttons for editing and creating contacts
+        botaoSalvar = [[UIBarButtonItem alloc] initWithTitle:@"Atualizar" style:UIBarButtonItemStylePlain target:self action:@selector(atualizaContato)];
+    } else {
+        botaoSalvar = [[UIBarButtonItem alloc] initWithTitle:@"Criar" style:UIBarButtonItemStylePlain target:self action:@selector(criaContato)];
+    }
+    self.navigationItem.rightBarButtonItem = botaoSalvar;
 }
 
 - (void)didReceiveMemoryWarning {

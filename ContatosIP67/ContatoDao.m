@@ -45,4 +45,8 @@ static ContatoDao *defaultDao = nil;
 - (Contato *) contatoDaPosicao:(NSInteger)posicao {
     return self.contatos[posicao];
 }
+
+- (void) removeContatoDaPosicao:(NSInteger)posicao {
+    [self.contatos removeObjectAtIndex:posicao];
+}
 @end

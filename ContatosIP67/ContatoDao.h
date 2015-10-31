@@ -15,4 +15,5 @@
 - (NSMutableArray *) todosContatos;
 - (NSInteger) total;
 - (Contato *) contatoDaPosicao: (NSInteger) posicao;
+- (void) removeContatoDaPosicao: (NSInteger) posicao;
 @end
