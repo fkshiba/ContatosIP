@@ -25,6 +25,7 @@
         self.navigationItem.rightBarButtonItem = botaoAdd;
         self.navigationItem.leftBarButtonItem = self.editButtonItem;
         self.dao = [ContatoDao contatoDaoInstance];
+        self.linha = -1;
     }
     return self;
 }
@@ -54,6 +55,7 @@
     if (self.contatoSelecionado) {
         form.contato = self.contatoSelecionado;
     }
+    form.delegate = self;
     [self.navigationController pushViewController: form animated: YES];
 }
 
@@ -73,6 +75,14 @@
     }
 }
 
+- (void)contatoAdicionado:(Contato *)contato {
+    self.linha = [self.dao posicaoDoContato:contato];
+}
+
+- (void)contatoAtualizado:(Contato *)contato {
+    self.linha = [self.dao posicaoDoContato:contato];
+}
+
 - (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     self.contatoSelecionado = [self.dao contatoDaPosicao:indexPath.row];
     [self exibeFormulario];
@@ -84,9 +94,30 @@
     [self.tableView reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if (self.linha >= 0) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.linha inSection:0];
+        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        self.linha = -1;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(exibeAcoes:)];
+    
+    [self.tableView addGestureRecognizer:longPress];
+}
+
+- (void)exibeAcoes: (UIGestureRecognizer *) gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        CGPoint ponto = [gesture locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:ponto];
+        Contato *contato = [self.dao contatoDaPosicao:indexPath.row];
+        self.gerenciador = [[GerenciadorDeAcoes alloc] initWithContato:contato];
+        [self.gerenciador mostraAcoesDoController:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

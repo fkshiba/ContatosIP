@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FormularioContatoViewController.h"
+#import "GerenciadorDeAcoes.h"
 
-@interface ListaContatosViewController : UITableViewController
-
+@interface ListaContatosViewController : UITableViewController <FormularioContatoViewControllerDelegate>
+@property NSInteger linha;
+@property GerenciadorDeAcoes *gerenciador;
 @end

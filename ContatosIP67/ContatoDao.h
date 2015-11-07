@@ -16,4 +16,5 @@
 - (NSInteger) total;
 - (Contato *) contatoDaPosicao: (NSInteger) posicao;
 - (void) removeContatoDaPosicao: (NSInteger) posicao;
+- (NSInteger) posicaoDoContato: (Contato *) contato;
 @end

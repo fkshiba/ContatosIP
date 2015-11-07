@@ -17,6 +17,7 @@
 		324338031BDBE27100A47A2E /* Contato.m in Sources */ = {isa = PBXBuildFile; fileRef = 324338021BDBE27100A47A2E /* Contato.m */; };
 		324338061BDBFA2200A47A2E /* ContatoDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 324338051BDBFA2200A47A2E /* ContatoDao.m */; };
 		324338091BDC07FB00A47A2E /* ListaContatosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324338081BDC07FB00A47A2E /* ListaContatosViewController.m */; };
+		32669B5E1BEE3FE300EBCEF1 /* GerenciadorDeAcoes.m in Sources */ = {isa = PBXBuildFile; fileRef = 32669B5D1BEE3FE300EBCEF1 /* GerenciadorDeAcoes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,9 @@
 		324338051BDBFA2200A47A2E /* ContatoDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContatoDao.m; sourceTree = "<group>"; };
 		324338071BDC07FB00A47A2E /* ListaContatosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaContatosViewController.h; sourceTree = "<group>"; };
 		324338081BDC07FB00A47A2E /* ListaContatosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaContatosViewController.m; sourceTree = "<group>"; };
+		32669B5C1BEE3FE300EBCEF1 /* GerenciadorDeAcoes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GerenciadorDeAcoes.h; sourceTree = "<group>"; };
+		32669B5D1BEE3FE300EBCEF1 /* GerenciadorDeAcoes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GerenciadorDeAcoes.m; sourceTree = "<group>"; };
+		32669B5F1BEE76EF00EBCEF1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 		324337DB1BDBAB4900A47A2E = {
 			isa = PBXGroup;
 			children = (
+				32669B5F1BEE76EF00EBCEF1 /* MessageUI.framework */,
 				324337E61BDBAB4900A47A2E /* ContatosIP67 */,
 				324337E51BDBAB4900A47A2E /* Products */,
 			);
@@ -80,6 +85,8 @@
 				324337F01BDBAB4900A47A2E /* Main.storyboard */,
 				324338071BDC07FB00A47A2E /* ListaContatosViewController.h */,
 				324338081BDC07FB00A47A2E /* ListaContatosViewController.m */,
+				32669B5C1BEE3FE300EBCEF1 /* GerenciadorDeAcoes.h */,
+				32669B5D1BEE3FE300EBCEF1 /* GerenciadorDeAcoes.m */,
 				324337F61BDBAB4900A47A2E /* Assets.xcassets */,
 				324337F81BDBAB4900A47A2E /* LaunchScreen.storyboard */,
 				324337FB1BDBAB4900A47A2E /* Info.plist */,
@@ -173,6 +180,7 @@
 				324337EC1BDBAB4900A47A2E /* AppDelegate.m in Sources */,
 				324338061BDBFA2200A47A2E /* ContatoDao.m in Sources */,
 				324337F51BDBAB4900A47A2E /* ContatosIP67.xcdatamodeld in Sources */,
+				32669B5E1BEE3FE300EBCEF1 /* GerenciadorDeAcoes.m in Sources */,
 				324337E91BDBAB4900A47A2E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +328,7 @@
 				324338001BDBAB4900A47A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

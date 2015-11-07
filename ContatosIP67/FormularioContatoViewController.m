@@ -29,13 +29,15 @@
 - (void) criaContato {
     self.contato = [Contato new];
     [self pegaDadosDoFormulario];
-    [self.navigationController popViewControllerAnimated:YES];
     ContatoDao *dao = [ContatoDao contatoDaoInstance];
     [dao adicionaContato:self.contato];
+    [self.delegate contatoAdicionado: self.contato];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)atualizaContato {
     [self pegaDadosDoFormulario];
+    [self.delegate contatoAtualizado:self.contato];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -79,4 +81,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)selecionaFoto {
+    NSLog(@"Clicou no botao de foto!");
+}
 @end
