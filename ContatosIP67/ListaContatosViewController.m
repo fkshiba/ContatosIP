@@ -27,6 +27,8 @@
         self.dao = [ContatoDao contatoDaoInstance];
         self.linha = -1;
     }
+    UIImage *img = [UIImage imageNamed:@"lista-contatos.png"];
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Lista" image:img tag:0];
     return self;
 }
 

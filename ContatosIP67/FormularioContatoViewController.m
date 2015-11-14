@@ -24,6 +24,7 @@
     self.contato.site = self.site.text;
     self.contato.endereco = self.endereco.text;
     self.contato.telefone = self.telefone.text;
+    self.contato.foto = self.botaoFoto.currentBackgroundImage;
 }
 
 - (void) criaContato {
@@ -67,6 +68,10 @@
         self.site.text = self.contato.site;
         self.endereco.text = self.contato.endereco;
         self.telefone.text = self.contato.telefone;
+        if (self.contato.foto) {
+            [self.botaoFoto setTitle:nil forState:UIControlStateNormal];
+            [self.botaoFoto setBackgroundImage:self.contato.foto forState:UIControlStateNormal];
+        }
         
         //create different buttons for editing and creating contacts
         botaoSalvar = [[UIBarButtonItem alloc] initWithTitle:@"Atualizar" style:UIBarButtonItemStylePlain target:self action:@selector(atualizaContato)];
@@ -82,6 +87,42 @@
 }
 
 - (IBAction)selecionaFoto {
-    NSLog(@"Clicou no botao de foto!");
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Escolhe a foto" delegate:self cancelButtonTitle:@"Cancelar" destructiveButtonTitle:nil otherButtonTitles:@"Câmera", @"Galeria", nil];
+        [sheet showInView:self.view];
+    } else {
+        UIImagePickerController *picker = [UIImagePickerController new];
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
 }
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *imagem = [info valueForKey:UIImagePickerControllerEditedImage];
+    [self.botaoFoto setBackgroundImage:imagem forState:UIControlStateNormal];
+    [self.botaoFoto setTitle:nil forState:UIControlStateNormal];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    UIImagePickerController *picker = [UIImagePickerController new];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    
+    if (buttonIndex == 0) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else if (buttonIndex == 1) {
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    } else {
+        return;
+    }
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+-(IBAction)buscarCoordenadas {
+    CLGeocoder *geocoder = [CLGeocoder new];
+}
+
 @end

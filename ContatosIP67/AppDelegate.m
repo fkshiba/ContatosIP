@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ListaContatosViewController.h"
+#import "ContatosNoMapaViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +19,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     ListaContatosViewController *lista = [ListaContatosViewController new];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController: lista];
-    self.window.rootViewController = nav;
+    UINavigationController *navLista = [[UINavigationController alloc] initWithRootViewController: lista];
+    ContatosNoMapaViewController *mapa = [ContatosNoMapaViewController new];
+    UINavigationController *navMapa = [[UINavigationController alloc] initWithRootViewController: mapa];
+    UITabBarController *tab = [UITabBarController new];
+//    UITabBarItem *navItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:0];
+//    UITabBarItem *mapaItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
+//    nav.tabBarItem = navItem;
+//    mapa.tabBarItem = mapaItem;
+    tab.viewControllers = @[navLista, navMapa];
+    self.window.rootViewController = tab;
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.

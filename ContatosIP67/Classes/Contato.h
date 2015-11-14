@@ -16,4 +16,6 @@
 @property NSString *endereco;
 @property NSString *telefone;
 @property UIImage *foto;
+@property NSNumber *latitude;
+@property NSNumber *longitude;
 @end

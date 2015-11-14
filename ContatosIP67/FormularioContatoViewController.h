@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Contato.h"
 
 @protocol FormularioContatoViewControllerDelegate <NSObject>
@@ -15,7 +16,7 @@
 
 @end
 
-@interface FormularioContatoViewController : UIViewController
+@interface FormularioContatoViewController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate>
 @property (nonatomic, weak) IBOutlet UITextField *nome;
 @property (nonatomic, weak) IBOutlet UITextField *email;
 @property (nonatomic, weak) IBOutlet UITextField *site;
@@ -25,5 +26,11 @@
 @property (weak) id<FormularioContatoViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *botaoFoto;
 - (IBAction)selecionaFoto;
+
+@property (nonatomic, weak) IBOutlet UITextField *latitude;
+@property (nonatomic, weak) IBOutlet UITextField *longitude;
+@property (nonatomic, weak) IBOutlet UIButton *botaoGeocode;
+- (IBAction)buscarCoordenadas;
+
 @end
 
