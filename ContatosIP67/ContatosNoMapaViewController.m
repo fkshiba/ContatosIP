@@ -28,6 +28,39 @@
     self.navigationItem.rightBarButtonItem = botaoGps;
     self.manager = [CLLocationManager new];
     [self.manager requestWhenInUseAuthorization];
+    self.contatos = [[ContatoDao contatoDaoInstance] todosContatos];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self.mapa addAnnotations:self.contatos];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.mapa removeAnnotations:self.contatos];
+}
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(nonnull id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass: [MKUserLocation class]]) {
+        return nil;
+    }
+    static NSString *identificador = @"balao";
+    MKPinAnnotationView *balao = (MKPinAnnotationView *)[self.mapa dequeueReusableAnnotationViewWithIdentifier:identificador];
+    if (!balao) {
+        NSLog(@"xxx");
+        balao = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identificador];
+    } else {
+        balao.annotation = annotation;
+    }
+    balao.tintColor = [UIColor colorWithRed:0 green:1 blue:1 alpha:1];
+    balao.canShowCallout = YES;
+    Contato *contato = (Contato *) annotation;
+    if (contato.foto) {
+        UIImageView *imagemContato = [[UIImageView alloc]
+                                      initWithFrame:CGRectMake(0.0, 0.0, 32.0, 32.0)];
+        imagemContato.image = contato.foto;
+        balao.leftCalloutAccessoryView = imagemContato;
+    }
+    return balao;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+#import <CoreData/CoreData.h>
 @import UIKit;
 
-@interface Contato : NSObject
+@interface Contato : NSManagedObject <MKAnnotation>
 @property NSString *nome;
 @property NSString *email;
 @property NSString *site;

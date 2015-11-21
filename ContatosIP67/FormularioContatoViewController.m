@@ -10,28 +10,29 @@
 #import "ContatoDao.h"
 
 @interface FormularioContatoViewController ()
-
+@property ContatoDao* dao;
 @end
 
 @implementation FormularioContatoViewController
 
 - (void) pegaDadosDoFormulario {
     if (!self.contato) {
-        self.contato = [Contato new];
+        self.dao = [ContatoDao contatoDaoInstance];
+        self.contato = [[ContatoDao contatoDaoInstance] novoContato];
     }
     self.contato.nome = self.nome.text;
     self.contato.email = self.email.text;
     self.contato.site = self.site.text;
     self.contato.endereco = self.endereco.text;
     self.contato.telefone = self.telefone.text;
+    self.contato.latitude = [NSNumber numberWithFloat: [self.latitude.text floatValue]];
+    self.contato.longitude = [NSNumber numberWithFloat: [self.longitude.text floatValue]];
     self.contato.foto = self.botaoFoto.currentBackgroundImage;
 }
 
 - (void) criaContato {
-    self.contato = [Contato new];
     [self pegaDadosDoFormulario];
-    ContatoDao *dao = [ContatoDao contatoDaoInstance];
-    [dao adicionaContato:self.contato];
+    [self.dao adicionaContato:self.contato];
     [self.delegate contatoAdicionado: self.contato];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -42,19 +43,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (id) init {
-    self = [super init];
-    NSLog(@"init");
-    return self;
-}
-
 - (id) initWithCoder:(NSCoder *) coder
 {
     self = [super initWithCoder: coder];
     if (self) {
         self.navigationItem.title = @"Novo";
     }
-    NSLog(@"initWithCoder");
     return self;
 }
 
@@ -68,6 +62,8 @@
         self.site.text = self.contato.site;
         self.endereco.text = self.contato.endereco;
         self.telefone.text = self.contato.telefone;
+        self.latitude.text = [self.contato.latitude stringValue];
+        self.longitude.text = [self.contato.longitude stringValue];
         if (self.contato.foto) {
             [self.botaoFoto setTitle:nil forState:UIControlStateNormal];
             [self.botaoFoto setBackgroundImage:self.contato.foto forState:UIControlStateNormal];
@@ -121,8 +117,21 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
--(IBAction)buscarCoordenadas {
-    CLGeocoder *geocoder = [CLGeocoder new];
+-(IBAction)buscarCoordenadas: (UIButton *) botao {
+    [self.rodinha startAnimating];
+    botao.hidden = YES;
+    CLGeocoder *geo = [CLGeocoder new];
+    [geo geocodeAddressString:self.endereco.text completionHandler:
+        ^(NSArray *resultados, NSError *erro) {
+            if ([resultados count] > 0 && erro == nil) {
+                CLPlacemark *resultado = resultados[0];
+                CLLocationCoordinate2D coordenada = resultado.location.coordinate;
+                self.latitude.text = [NSString stringWithFormat:@"%f", coordenada.latitude];
+                self.longitude.text = [NSString stringWithFormat:@"%f", coordenada.longitude];
+                [self.rodinha stopAnimating];
+                botao.hidden = NO;
+            }
+        }];
 }
 
 @end

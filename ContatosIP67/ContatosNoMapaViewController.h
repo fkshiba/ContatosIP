@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "ContatoDao.h"
+#import "Contato.h"
 
-@interface ContatosNoMapaViewController : UIViewController
+@interface ContatosNoMapaViewController : UIViewController <MKMapViewDelegate>
 @property IBOutlet MKMapView *mapa;
 @property CLLocationManager *manager;
+@property NSMutableArray *contatos;
 @end

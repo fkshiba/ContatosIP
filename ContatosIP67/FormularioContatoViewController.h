@@ -30,7 +30,9 @@
 @property (nonatomic, weak) IBOutlet UITextField *latitude;
 @property (nonatomic, weak) IBOutlet UITextField *longitude;
 @property (nonatomic, weak) IBOutlet UIButton *botaoGeocode;
-- (IBAction)buscarCoordenadas;
+- (IBAction)buscarCoordenadas: (UIButton *) botao;
+
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *rodinha;
 
 @end
 

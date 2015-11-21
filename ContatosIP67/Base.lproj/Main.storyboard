@@ -45,7 +45,7 @@
                                 </accessibility>
                                 <state key="normal" image="gps"/>
                                 <connections>
-                                    <action selector="buscarCoordenadas" destination="BYZ-38-t0r" eventType="touchUpInside" id="hTN-PV-l8o"/>
+                                    <action selector="buscarCoordenadas:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Wv-Ra-m7h"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-na-BhF">
@@ -110,6 +110,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zWd-7L-ROw">
+                                <rect key="frame" x="248" y="226" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -123,6 +126,7 @@
                         <outlet property="latitude" destination="cFb-mc-Kx3" id="jfD-u4-WPx"/>
                         <outlet property="longitude" destination="FEB-3X-Qgz" id="H8S-e0-bJh"/>
                         <outlet property="nome" destination="8C3-wW-n7y" id="Oaf-23-tWQ"/>
+                        <outlet property="rodinha" destination="zWd-7L-ROw" id="Pvb-cm-Aae"/>
                         <outlet property="site" destination="hhh-sA-qBV" id="HzO-PX-4w1"/>
                         <outlet property="telefone" destination="amQ-kQ-fuY" id="t09-rm-GLn"/>
                     </connections>
